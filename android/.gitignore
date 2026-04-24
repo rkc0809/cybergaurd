@@ -1,0 +1,26 @@
+/.gradle
+/local.properties
+/key.properties
+/app/*.keystore
+# Flutter
+.build/
+.dart_tool/
+.packages
+.pub/
+.pub-cache/
+build/
+
+# Android
+android/.gradle/
+android/app/build/
+
+# iOS
+ios/Pods/
+
+# IDE
+.idea/
+.vscode/
+
+# Misc
+*.log
+*.tmp

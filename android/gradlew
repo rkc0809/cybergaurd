@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+APP_HOME="$(cd "$(dirname "$0")" && pwd)"
+WRAPPER_JAR="$APP_HOME/gradle/wrapper/gradle-wrapper.jar"
+
+if [ -f "$WRAPPER_JAR" ]; then
+  if [ -z "$JAVA_HOME" ]; then
+    echo "JAVA_HOME is not set."
+    exit 1
+  fi
+  exec "$JAVA_HOME/bin/java" -classpath "$WRAPPER_JAR" org.gradle.wrapper.GradleWrapperMain "$@"
+fi
+
+if command -v gradle >/dev/null 2>&1; then
+  exec gradle "$@"
+fi
+
+echo "Gradle wrapper jar is missing and Gradle is not installed."
+echo "Run 'flutter create . --platforms=android' on a machine with Flutter installed to regenerate wrapper binaries."
+exit 1
